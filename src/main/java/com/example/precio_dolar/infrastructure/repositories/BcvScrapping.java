@@ -10,6 +10,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import com.example.precio_dolar.domain.dtos.CurrencyDTO;
@@ -22,7 +23,8 @@ import org.jsoup.nodes.Element;
 @Repository
 public class BcvScrapping implements WebScrapping {
 
-    private static final String URL = "https://www.bcv.org.ve/";
+    @Value("${bcv.url}")
+    String URL;
 
     @Override
     public List<CurrencyDTO> execute() {
